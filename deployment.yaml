@@ -25,7 +25,7 @@ spec:
         persistentVolumeClaim:
           claimName: heimdall-claim
       containers:
-      - image: ghcr.io/linuxserver/heimdall # < the name of the docker image we will use
+      - image: ghcr.io/linuxserver/heimdall:2.2.2 # < the name of the docker image we will use
         name: heimdall                      # < name of container
         imagePullPolicy: Always             # < always use the latest image when creating container/pod
         env:                                # < the environment variables required (see container documentation)
