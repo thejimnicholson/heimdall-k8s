@@ -21,9 +21,9 @@ spec:
         app: heimdall
     spec:
       volumes:
-      - name: heimdall-data
+      - name: heimdall-storage
         persistentVolumeClaim:
-          claimName: heimdall-claim
+          claimName: heimdall-storage
       containers:
       - image: ghcr.io/linuxserver/heimdall:2.5.3 # < the name of the docker image we will use
         name: heimdall                      # < name of container
@@ -41,4 +41,4 @@ spec:
           protocol: TCP
         volumeMounts:                       # < the volume mount in the container. Look at the relation volumelabel->pvc->pv
         - mountPath: /config               # < mount location in the container
-          name: heimdall-data              # < volumelabel configured earlier in the yaml file
+          name: heimdall-storage              # < volumelabel configured earlier in the yaml file
