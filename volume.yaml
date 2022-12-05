@@ -1,5 +1,25 @@
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: heimdall-pv
+  namespace: heimdall
+  labels:
+    app: heimdall
+spec:
+  storageClassName: "local-path"
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - nolock
+  nfs:
+    server: 10.0.96.14
+    path: "/mnt/data/heimdall-config"
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: heimdall-claim
@@ -11,3 +31,19 @@ spec:
   resources:
     requests:
       storage: 5Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: heimdall-storage
+  namespace: heimdall
+  annotations:
+spec:
+  storageClassName: "local-path"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  volumeName: heimdall-pv
