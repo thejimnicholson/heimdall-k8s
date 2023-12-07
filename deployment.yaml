@@ -25,7 +25,7 @@ spec:
         persistentVolumeClaim:
           claimName: heimdall-storage
       containers:
-      - image: ghcr.io/linuxserver/heimdall:2.5.6 # < the name of the docker image we will use
+      - image: ghcr.io/linuxserver/heimdall:2.5.8 # < the name of the docker image we will use
         name: heimdall                      # < name of container
         imagePullPolicy: Always             # < always use the latest image when creating container/pod
         env:                                # < the environment variables required (see container documentation)
@@ -33,7 +33,7 @@ spec:
             value: "1000"
           - name: PUID
             value: "1000"
-          - name: TZ
+          - name: TZs
             value: "America/Los_Angeles"
         ports:                              # < the ports required (see container documentation)
         - containerPort: 80
