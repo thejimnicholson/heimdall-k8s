@@ -21,9 +21,6 @@ spec:
         app: heimdall
     spec:
       volumes:
-      - name: heimdall-storage
-        persistentVolumeClaim:
-          claimName: heimdall-storage
       - name: heimdall-storage-new
         persistentVolumeClaim:
           claimName: heimdall-storage-new
@@ -43,7 +40,5 @@ spec:
           name: http-80
           protocol: TCP
         volumeMounts:                       # < the volume mount in the container. Look at the relation volumelabel->pvc->pv
-        - mountPath: /config               # < mount location in the container
-          name: heimdall-storage              # < volumelabel configured earlier in the yaml file
-        - mountPath: /config.new              # < mount location in the container
+        - mountPath: /config              # < mount location in the container
           name: heimdall-storage-new
