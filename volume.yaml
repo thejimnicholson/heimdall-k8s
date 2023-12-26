@@ -33,3 +33,16 @@ spec:
     requests:
       storage: 5Gi
   volumeName: heimdall-pv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: heimdall-storage-new
+  namespace: heimdall
+spec:
+  storageClassName: nfs-client
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
